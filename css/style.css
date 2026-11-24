@@ -1,0 +1,189 @@
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background-color: #FFF9F5;
+  color: #17202A;
+  overflow-x: hidden;
+}
+h1, h2, h3, h4, .font-heading {
+  font-family: 'Sora', system-ui, sans-serif;
+  letter-spacing: -0.025em;
+}
+.stall-card {
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease, border-color 0.2s ease;
+}
+.stall-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(23, 32, 42, 0.10);
+  border-color: #FFD8C7;
+}
+.stall-img {
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.stall-card:hover .stall-img {
+  transform: scale(1.05);
+}
+.nav-glass {
+  background: rgba(255, 249, 245, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.nav-solid {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 4px 20px rgba(23, 32, 42, 0.06);
+  border-bottom: 1px solid #F1ECE8;
+}
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, #F3EDE8 25%, #FAF6F2 50%, #F3EDE8 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s infinite linear;
+}
+@keyframes pop {
+  0% { transform: scale(1); }
+  45% { transform: scale(1.28); }
+  100% { transform: scale(1); }
+}
+.heart-pop { animation: pop 0.28s ease-out; }
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-in { animation: fadeSlideUp 0.24s ease-out forwards; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Page & card entrance animations */
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.page-enter {
+  animation: pageFadeIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Gentle float for hero badge cards */
+@keyframes floatY {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-7px); }
+}
+.float-slow {
+  animation: floatY 4.2s ease-in-out infinite;
+}
+.float-delayed {
+  animation: floatY 4.8s ease-in-out 1.2s infinite;
+}
+
+/* Subtle pulse on live status dot */
+@keyframes pulseDot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34, 160, 107, 0.45); }
+  60% { box-shadow: 0 0 0 7px rgba(34, 160, 107, 0); }
+}
+.live-dot {
+  animation: pulseDot 2.2s ease-out infinite;
+}
+
+/* Staggered card reveal */
+@keyframes cardRise {
+  from { opacity: 0; transform: translateY(16px) scale(0.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.stagger-grid > * {
+  opacity: 0;
+  animation: cardRise 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.stagger-grid > *:nth-child(1) { animation-delay: 0.04s; }
+.stagger-grid > *:nth-child(2) { animation-delay: 0.09s; }
+.stagger-grid > *:nth-child(3) { animation-delay: 0.14s; }
+.stagger-grid > *:nth-child(4) { animation-delay: 0.19s; }
+.stagger-grid > *:nth-child(5) { animation-delay: 0.24s; }
+.stagger-grid > *:nth-child(6) { animation-delay: 0.29s; }
+.stagger-grid > *:nth-child(n+7) { animation-delay: 0.34s; }
+
+/* Rating bar smooth fill */
+@keyframes barGrow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.bar-grow {
+  transform-origin: left center;
+  animation: barGrow 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Scroll reveal for sections */
+.reveal-section {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Button tactile press */
+button:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+/* Hero staggered entrance on main page load */
+@keyframes heroUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-anim-1 { opacity: 0; animation: heroUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.05s forwards; }
+.hero-anim-2 { opacity: 0; animation: heroUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.14s forwards; }
+.hero-anim-3 { opacity: 0; animation: heroUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.24s forwards; }
+.hero-anim-4 { opacity: 0; animation: heroUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.34s forwards; }
+.hero-anim-5 { opacity: 0; animation: heroUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.22s forwards; }
+
+/* Subtle warm orange gradient shimmer on hero accent text */
+@keyframes textShimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.hero-gradient-text {
+  background: linear-gradient(90deg, #FF6B35, #F59E0B, #E85A24, #FF6B35);
+  background-size: 240% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: textShimmer 5s ease-in-out infinite;
+}
+
+/* Noticeable smooth float for hero cards */
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+.float-slow { animation: floatCard 3.6s ease-in-out infinite; }
+.float-delayed { animation: floatCard 4.1s ease-in-out 0.9s infinite; }
+
+/* Step card lift on hover */
+.step-card {
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease, border-color 0.2s ease;
+}
+.step-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 32px rgba(255, 107, 53, 0.12);
+  border-color: #FFD8C7;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .page-enter, .float-slow, .float-delayed, .live-dot, .stagger-grid > *, .bar-grow {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+  .reveal-section {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
